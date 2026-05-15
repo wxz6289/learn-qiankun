@@ -1,9 +1,21 @@
 {
-  "name": "learn-qiankun",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "qiankun-lab",
+  "version": "2.0.0",
+  "private": true,
+  "description": "qiankun 微前端学习示例：主应用 + React / Vue 子应用",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n main,react,vue -c blue,green,magenta \"npm run dev -w main\" \"npm run dev -w sub-react\" \"npm run dev -w sub-vue\"",
+    "dev:main": "npm run dev -w main",
+    "dev:react": "npm run dev -w sub-react",
+    "dev:vue": "npm run dev -w sub-vue",
+    "build": "npm run build -w main && npm run build -w sub-react && npm run build -w sub-vue"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
   "license": "MIT",
-  "dependencies": {
-    "qiankun": "^2.10.8"
-  }
+  "packageManager": "yarn@3.6.0+sha512.418e45c2268c4d6b69a28f3939084b5853d5f392c43c0b5588bd1995a96e328414ae4b7777a8980c64bad4328c52586ff879b289f98ae65372a55fa4d0ff70dd"
 }

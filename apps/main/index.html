@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>qiankun 主应用</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <header class="shell">
+    <h1>qiankun 主应用</h1>
+    <nav class="nav">
+      <a href="/" data-link>首页</a>
+      <a href="/react" data-link>React 子应用</a>
+      <a href="/vue" data-link>Vue 子应用</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section id="home-panel" class="panel">
+      <p>主应用运行在 <code>localhost:7100</code>。请确保子应用 dev server 已启动（<code>npm run dev</code> 会一并启动）。</p>
+      <ul>
+        <li>React 子应用：<code>//localhost:7101</code>，激活规则 <code>/react</code></li>
+        <li>Vue 子应用：<code>//localhost:7102</code>，激活规则 <code>/vue</code></li>
+      </ul>
+    </section>
+    <section id="subapp-container" class="subapp-container" hidden></section>
+  </main>
+
+  <footer class="shell log-bar">
+    <span>生命周期日志见控制台</span>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

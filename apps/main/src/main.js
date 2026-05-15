@@ -1,8 +1,11 @@
 import { registerMicroApps, start } from 'qiankun';
+import { createMicroAppProps, setupMainCommunication } from './communication.js';
 
 const homePanel = document.getElementById('home-panel');
 const subappContainer = document.getElementById('subapp-container');
 const navLinks = document.querySelectorAll('[data-link]');
+
+const shared = setupMainCommunication();
 
 function setActiveNav(pathname) {
   navLinks.forEach((link) => {
@@ -36,6 +39,8 @@ document.querySelector('.nav').addEventListener('click', (event) => {
 
 window.addEventListener('popstate', onRouteChange);
 
+const baseProps = createMicroAppProps(shared);
+
 registerMicroApps(
   [
     {
@@ -43,14 +48,14 @@ registerMicroApps(
       entry: '//localhost:7101',
       container: '#subapp-container',
       activeRule: '/react',
-      props: { from: 'main', framework: 'react' },
+      props: { ...baseProps, appName: 'sub-react' },
     },
     {
       name: 'sub-vue',
       entry: '//localhost:7102',
       container: '#subapp-container',
       activeRule: '/vue',
-      props: { from: 'main', framework: 'vue' },
+      props: { ...baseProps, appName: 'sub-vue' },
     },
   ],
   {
@@ -61,9 +66,18 @@ registerMicroApps(
   },
 );
 
+function excludeAssetFilter(url) {
+  return (
+    url.includes('@react-refresh')
+    || url.includes('@vite/client')
+    || url.includes('vite-plugin-qiankun')
+  );
+}
+
 start({
   prefetch: true,
   sandbox: { experimentalStyleIsolation: true },
+  excludeAssetFilter,
 });
 
 onRouteChange();

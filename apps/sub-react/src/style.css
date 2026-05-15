@@ -10,6 +10,45 @@
   color: #2e7d32;
 }
 
+.persist-hint {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  color: #558b2f;
+}
+
+.subapp--react .comm {
+  margin: 0.75rem 0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.subapp--react .comm h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.subapp--react .comm-state {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.subapp--react .comm-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.subapp--react .comm-row input {
+  flex: 1;
+  min-width: 10rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+}
+
 .subapp--react button {
   margin-top: 0.75rem;
   padding: 0.4rem 0.9rem;
@@ -18,4 +57,12 @@
   background: #43a047;
   color: #fff;
   cursor: pointer;
+}
+
+.subapp--react .comm-row button {
+  margin-top: 0;
+}
+
+.subapp--react .btn-secondary {
+  background: #2e7d32;
 }

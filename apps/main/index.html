@@ -16,6 +16,23 @@
     </nav>
   </header>
 
+  <section class="shell comm-panel">
+    <h2 class="comm-title">应用通信</h2>
+    <p class="comm-hint">
+      <strong>方式一</strong> <code>initGlobalState</code>（主子、子子共享） ·
+      <strong>方式二</strong> <code>props.mainApi</code>（子 → 主回调）
+    </p>
+    <div class="comm-row">
+      <label class="comm-label">
+        主应用广播
+        <input id="main-message-input" type="text" placeholder="输入消息后发送给所有子应用">
+      </label>
+      <button type="button" id="main-send-btn">setGlobalState</button>
+    </div>
+    <p class="comm-state">当前全局状态：<output id="global-state-display">—</output></p>
+    <ol id="comm-log" class="comm-log" aria-live="polite"></ol>
+  </section>
+
   <main class="shell">
     <section id="home-panel" class="panel">
       <p>主应用运行在 <code>localhost:7100</code>。请确保子应用 dev server 已启动（<code>npm run dev</code> 会一并启动）。</p>
@@ -23,12 +40,13 @@
         <li>React 子应用：<code>//localhost:7101</code>，激活规则 <code>/react</code></li>
         <li>Vue 子应用：<code>//localhost:7102</code>，激活规则 <code>/vue</code></li>
       </ul>
+      <p>切换到子应用后，上方通信面板仍保持可见，可在 React / Vue 之间通过全局状态互发消息。</p>
     </section>
     <section id="subapp-container" class="subapp-container" hidden></section>
   </main>
 
   <footer class="shell log-bar">
-    <span>生命周期日志见控制台</span>
+    <span>qiankun 生命周期日志见浏览器控制台</span>
   </footer>
 
   <script type="module" src="/src/main.js"></script>
